@@ -17,23 +17,24 @@ void loop()
   slideSwitch = CircuitPlayground.slideSwitch(); 
 
   Serial.print("Slide Switch: "); 
+
   if(slideSwitch)
   {
     Serial.print("+");
-    CircuitPlayground.setPixelColor(0, 0, 0, 150);  
-    CircuitPlayground.setPixelColor(2, 0, 0, 150);  
-    CircuitPlayground.setPixelColor(4, 0, 0, 150);  
-    CircuitPlayground.setPixelColor(6, 0, 0, 0);
-    CircuitPlayground.setPixelColor(8, 0, 0, 0); 
+    CircuitPlayground.setPixelColor(0, 255, 255, 255);  //white
+    CircuitPlayground.setPixelColor(2, 255, 165, 0);  //orange
+    CircuitPlayground.setPixelColor(4, 0, 128, 0);  //green
+    CircuitPlayground.setPixelColor(6, 75, 0, 130); //indigo
+    //CircuitPlayground.setPixelColor(8, 0, 0, 0); //nothing(black)
     CircuitPlayground.playTone(330,100);
 
     delay(100); 
 
-    CircuitPlayground.setPixelColor(1, 0, 0, 0); 
-    CircuitPlayground.setPixelColor(3, 0, 0, 0); 
-    CircuitPlayground.setPixelColor(5, 250, 20, 150); 
-    CircuitPlayground.setPixelColor(7, 250, 20, 150); 
-    CircuitPlayground.setPixelColor(9, 250, 20, 150); 
+    CircuitPlayground.setPixelColor(1, 255, 0, 0); //red
+    CircuitPlayground.setPixelColor(3, 255, 255, 0); //yellow
+    CircuitPlayground.setPixelColor(5, 0, 0, 255); //blue
+    CircuitPlayground.setPixelColor(7, 127, 0, 255); //violet
+    //CircuitPlayground.setPixelColor(9, 250, 20, 150); //nothing(black 
     CircuitPlayground.playTone(330,100);
     
     delay(100); 
@@ -41,6 +42,7 @@ void loop()
   else
   {
     Serial.print("-");
+    CircuitPlayground.setPixelColor(0, 0, 0, 0);
     CircuitPlayground.setPixelColor(1, 0, 0, 0);
     CircuitPlayground.setPixelColor(2, 0, 0, 0);
     CircuitPlayground.setPixelColor(3, 0, 0, 0);
@@ -51,20 +53,23 @@ void loop()
     CircuitPlayground.setPixelColor(8, 0, 0, 0);
     CircuitPlayground.setPixelColor(9, 0, 0, 0);
   }
-Serial.print("Left Button: ");
+
+  Serial.print("Left Button: ");
+
+  //rainbow forward
   if(leftButtonPressed)
   {
     Serial.print("DOWN"); 
-    CircuitPlayground.setPixelColor(0, 0, 0, 150);
-    CircuitPlayground.setPixelColor(1, 0, 0, 150);
-    CircuitPlayground.setPixelColor(2, 0, 0, 150);
-    CircuitPlayground.setPixelColor(3, 0, 0, 150);
-    CircuitPlayground.setPixelColor(4, 0, 0, 150);
+    CircuitPlayground.setPixelColor(0, 255, 255, 255);//white
+    CircuitPlayground.setPixelColor(1, 255, 0, 0);//red 
+    CircuitPlayground.setPixelColor(2, 255, 165, 0);//orange
+    CircuitPlayground.setPixelColor(3, 255, 255, 0);//yellow
+    CircuitPlayground.setPixelColor(4, 0, 0, 0);
     CircuitPlayground.setPixelColor(5, 0, 0, 0);
-    CircuitPlayground.setPixelColor(6, 0, 0, 0);
-    CircuitPlayground.setPixelColor(7, 0, 0, 0);
-    CircuitPlayground.setPixelColor(8, 0, 0, 0);
-    CircuitPlayground.setPixelColor(9, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 0, 128, 0);//green
+    CircuitPlayground.setPixelColor(7, 0, 0, 255);//blue
+    CircuitPlayground.setPixelColor(8, 75, 0, 130);//indigo
+    CircuitPlayground.setPixelColor(9, 127, 0, 255);//violet
     CircuitPlayground.playTone(330,100);
   }
   else
@@ -81,6 +86,39 @@ Serial.print("Left Button: ");
     CircuitPlayground.setPixelColor(8, 0, 0, 0);
     CircuitPlayground.setPixelColor(9, 0, 0, 0);
   }
-Serial.print("Right Button: "); 
 
+  //rainbow reversed
+  Serial.print("Right Button: "); 
+  if(rightButtonPressed)
+  {
+    Serial.print("DOWN"); 
+    CircuitPlayground.setPixelColor(0, 127, 0, 255);//violet
+    CircuitPlayground.setPixelColor(1, 75, 0, 130);//indigo
+    CircuitPlayground.setPixelColor(2, 0, 0, 255);//blue
+    CircuitPlayground.setPixelColor(3, 0, 128, 0);//green
+    CircuitPlayground.setPixelColor(4, 0, 0, 0);
+    CircuitPlayground.setPixelColor(5, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 255, 255, 0);//yellow
+    CircuitPlayground.setPixelColor(7, 255, 165, 0);//orange
+    CircuitPlayground.setPixelColor(8, 255, 255, 0);//red
+    CircuitPlayground.setPixelColor(9, 255, 255, 255);//white
+    CircuitPlayground.playTone(392,100);
+  }
+  else
+  {
+    CircuitPlayground.setPixelColor(0, 0, 0, 0);
+    CircuitPlayground.setPixelColor(1, 0, 0, 0);
+    CircuitPlayground.setPixelColor(2, 0, 0, 0);
+    CircuitPlayground.setPixelColor(3, 0, 0, 0);
+    CircuitPlayground.setPixelColor(4, 0, 0, 0);
+    CircuitPlayground.setPixelColor(5, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 0, 0, 0);
+    CircuitPlayground.setPixelColor(7, 0, 0, 0);
+    CircuitPlayground.setPixelColor(8, 0, 0, 0);
+    CircuitPlayground.setPixelColor(9, 0, 0, 0); 
+  }
+
+  Serial.println(); 
+
+  delay(0); 
 }
