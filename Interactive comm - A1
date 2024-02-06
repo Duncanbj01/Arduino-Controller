@@ -4,12 +4,14 @@ bool leftButtonPressed;
 bool rightButtonPressed; 
 bool slideSwitch; 
 
-void setup() {
+void setup() 
+{
   Serial.begin(9600); 
   CircuitPlayground.begin(); 
 }
 
-void loop() {
+void loop() 
+{
   leftButtonPressed = CircuitPlayground.leftButton(); 
   rightButtonPressed = CircuitPlayground.rightButton();
   slideSwitch = CircuitPlayground.slideSwitch(); 
@@ -49,4 +51,36 @@ void loop() {
     CircuitPlayground.setPixelColor(8, 0, 0, 0);
     CircuitPlayground.setPixelColor(9, 0, 0, 0);
   }
+Serial.print("Left Button: ");
+  if(leftButtonPressed)
+  {
+    Serial.print("DOWN"); 
+    CircuitPlayground.setPixelColor(0, 0, 0, 150);
+    CircuitPlayground.setPixelColor(1, 0, 0, 150);
+    CircuitPlayground.setPixelColor(2, 0, 0, 150);
+    CircuitPlayground.setPixelColor(3, 0, 0, 150);
+    CircuitPlayground.setPixelColor(4, 0, 0, 150);
+    CircuitPlayground.setPixelColor(5, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 0, 0, 0);
+    CircuitPlayground.setPixelColor(7, 0, 0, 0);
+    CircuitPlayground.setPixelColor(8, 0, 0, 0);
+    CircuitPlayground.setPixelColor(9, 0, 0, 0);
+    CircuitPlayground.playTone(330,100);
+  }
+  else
+  {
+    Serial.Print(" UP"); 
+    CircuitPlayground.setPixelColor(0, 0, 0, 0);
+    CircuitPlayground.setPixelColor(1, 0, 0, 0);
+    CircuitPlayground.setPixelColor(2, 0, 0, 0);
+    CircuitPlayground.setPixelColor(3, 0, 0, 0);
+    CircuitPlayground.setPixelColor(4, 0, 0, 0);
+    CircuitPlayground.setPixelColor(5, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 0, 0, 0);
+    CircuitPlayground.setPixelColor(7, 0, 0, 0);
+    CircuitPlayground.setPixelColor(8, 0, 0, 0);
+    CircuitPlayground.setPixelColor(9, 0, 0, 0);
+  }
+Serial.print("Right Button: "); 
+
 }
