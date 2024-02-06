@@ -1,0 +1,52 @@
+#include <Adafruit_CircuitPlayground.h>
+
+bool leftButtonPressed; 
+bool rightButtonPressed; 
+bool slideSwitch; 
+
+void setup() {
+  Serial.begin(9600); 
+  CircuitPlayground.begin(); 
+}
+
+void loop() {
+  leftButtonPressed = CircuitPlayground.leftButton(); 
+  rightButtonPressed = CircuitPlayground.rightButton();
+  slideSwitch = CircuitPlayground.slideSwitch(); 
+
+  Serial.print("Slide Switch: "); 
+  if(slideSwitch)
+  {
+    Serial.print("+");
+    CircuitPlayground.setPixelColor(0, 0, 0, 150);  
+    CircuitPlayground.setPixelColor(2, 0, 0, 150);  
+    CircuitPlayground.setPixelColor(4, 0, 0, 150);  
+    CircuitPlayground.setPixelColor(6, 0, 0, 0);
+    CircuitPlayground.setPixelColor(8, 0, 0, 0); 
+    CircuitPlayground.playTone(330,100);
+
+    delay(100); 
+
+    CircuitPlayground.setPixelColor(1, 0, 0, 0); 
+    CircuitPlayground.setPixelColor(3, 0, 0, 0); 
+    CircuitPlayground.setPixelColor(5, 250, 20, 150); 
+    CircuitPlayground.setPixelColor(7, 250, 20, 150); 
+    CircuitPlayground.setPixelColor(9, 250, 20, 150); 
+    CircuitPlayground.playTone(330,100);
+    
+    delay(100); 
+  }
+  else
+  {
+    Serial.print("-");
+    CircuitPlayground.setPixelColor(1, 0, 0, 0);
+    CircuitPlayground.setPixelColor(2, 0, 0, 0);
+    CircuitPlayground.setPixelColor(3, 0, 0, 0);
+    CircuitPlayground.setPixelColor(4, 0, 0, 0);
+    CircuitPlayground.setPixelColor(5, 0, 0, 0);
+    CircuitPlayground.setPixelColor(6, 0, 0, 0);
+    CircuitPlayground.setPixelColor(7, 0, 0, 0);
+    CircuitPlayground.setPixelColor(8, 0, 0, 0);
+    CircuitPlayground.setPixelColor(9, 0, 0, 0);
+  }
+}
